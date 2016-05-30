@@ -16,6 +16,7 @@
 		001173371CFC7D3100AA7B71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001173351CFC7D3100AA7B71 /* LaunchScreen.storyboard */; };
 		001173421CFC7D3100AA7B71 /* EventBriteSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 001173411CFC7D3100AA7B71 /* EventBriteSearchTests.m */; };
 		0011734D1CFC7D3100AA7B71 /* EventBriteSearchUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0011734C1CFC7D3100AA7B71 /* EventBriteSearchUITests.m */; };
+		EA8EDC1A8122AF76864355BA /* libPods-EventBriteSearch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E2CBA30A4A88744DDEF7462 /* libPods-EventBriteSearch.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,9 @@
 		001173481CFC7D3100AA7B71 /* EventBriteSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventBriteSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0011734C1CFC7D3100AA7B71 /* EventBriteSearchUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventBriteSearchUITests.m; sourceTree = "<group>"; };
 		0011734E1CFC7D3100AA7B71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E2CBA30A4A88744DDEF7462 /* libPods-EventBriteSearch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EventBriteSearch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE4E084B3685387B8220FBD6 /* Pods-EventBriteSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventBriteSearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EventBriteSearch/Pods-EventBriteSearch.debug.xcconfig"; sourceTree = "<group>"; };
+		B3D735A9583111B45AA2EE80 /* Pods-EventBriteSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventBriteSearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-EventBriteSearch/Pods-EventBriteSearch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA8EDC1A8122AF76864355BA /* libPods-EventBriteSearch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +92,8 @@
 				001173401CFC7D3100AA7B71 /* EventBriteSearchTests */,
 				0011734B1CFC7D3100AA7B71 /* EventBriteSearchUITests */,
 				001173221CFC7D3000AA7B71 /* Products */,
+				A73351533FA9A75165AB6E0B /* Pods */,
+				173B49E5E5BB8BBCF4472988 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +150,23 @@
 			path = EventBriteSearchUITests;
 			sourceTree = "<group>";
 		};
+		173B49E5E5BB8BBCF4472988 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E2CBA30A4A88744DDEF7462 /* libPods-EventBriteSearch.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A73351533FA9A75165AB6E0B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE4E084B3685387B8220FBD6 /* Pods-EventBriteSearch.debug.xcconfig */,
+				B3D735A9583111B45AA2EE80 /* Pods-EventBriteSearch.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,9 +174,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 001173511CFC7D3100AA7B71 /* Build configuration list for PBXNativeTarget "EventBriteSearch" */;
 			buildPhases = (
+				EF93588A7D0F11A4DD3900B9 /* 📦 Check Pods Manifest.lock */,
 				0011731D1CFC7D2F00AA7B71 /* Sources */,
 				0011731E1CFC7D2F00AA7B71 /* Frameworks */,
 				0011731F1CFC7D2F00AA7B71 /* Resources */,
+				8F0876999266BB428D993CAC /* 📦 Embed Pods Frameworks */,
+				D019F9E481172D12485BB0E4 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -267,6 +294,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8F0876999266BB428D993CAC /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EventBriteSearch/Pods-EventBriteSearch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D019F9E481172D12485BB0E4 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EventBriteSearch/Pods-EventBriteSearch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF93588A7D0F11A4DD3900B9 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0011731D1CFC7D2F00AA7B71 /* Sources */ = {
@@ -417,6 +492,7 @@
 		};
 		001173521CFC7D3100AA7B71 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE4E084B3685387B8220FBD6 /* Pods-EventBriteSearch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = EventBriteSearch/Info.plist;
@@ -428,6 +504,7 @@
 		};
 		001173531CFC7D3100AA7B71 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3D735A9583111B45AA2EE80 /* Pods-EventBriteSearch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = EventBriteSearch/Info.plist;
@@ -502,6 +579,7 @@
 				001173531CFC7D3100AA7B71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		001173541CFC7D3100AA7B71 /* Build configuration list for PBXNativeTarget "EventBriteSearchTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +588,7 @@
 				001173561CFC7D3100AA7B71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		001173571CFC7D3100AA7B71 /* Build configuration list for PBXNativeTarget "EventBriteSearchUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +597,7 @@
 				001173591CFC7D3100AA7B71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
