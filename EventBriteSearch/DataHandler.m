@@ -7,6 +7,7 @@
 //
 
 #import "DataHandler.h"
+#import "Event.h"
 
 @implementation DataHandler
 
@@ -31,13 +32,64 @@
     if (error) {
         NSLog(@"%s JSON Conversion error: %@", __PRETTY_FUNCTION__, error);
     } else {
-        for (NSDictionary* event in wholeData[@"events"]) {
-            NSString* name = event[@"name"][@"text"];
-            NSString* logo = event[@"logo"][@"text"];
-            NSString* start = event[@"name"][@"text"];
-            NSString* end = event[@"name"][@"text"];
-        }
+        [MagicalRecord saveWithBlock:^(NSManagedObjectContext* localContext) {
+            for (NSDictionary* event in wholeData[@"events"]) {
+                if (event[@"id"] && [event[@"id"] isKindOfClass:[NSString class]]) {
+                    Event* newEvent = [Event MR_findFirstOrCreateByAttribute:@"eventid"
+                                                                   withValue:event[@"id"]
+                                                                   inContext:localContext];
+                    if ([self checkDatum:event[@"name"] forKey:@"text"]) {
+                        newEvent.name = event[@"name"][@"text"];
+                    }
+                    if ([self checkDatum:event[@"logo"] forKey:@"url"]) {
+                        newEvent.logo = event[@"logo"][@"url"];
+                    }
+                    if ([self checkDatum:event[@"start"] forKey:@"utc"]) {
+                        newEvent.start = event[@"start"][@"utc"];
+                    }
+                    if ([self checkDatum:event[@"end"] forKey:@"utc"]) {
+                        newEvent.end = event[@"end"][@"utc"];
+                    }
+                }
+            }
+        } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
+            if (contextDidSave) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"kDataDidFinishloading"
+                                                                    object:nil];
+            } else {
+                NSLog(@"%s Error saving: %@", __PRETTY_FUNCTION__, error.debugDescription);
+            }
+        }];
     }
+}
+
+/**
+ * Checks a data object is not null, is an NSDictionary and contains a value for a specified key
+ *
+ * @param: (id)datum
+ *      - The data object to be checked
+ *
+ * @param: (NSString*)key
+ *      - The key to check the NSDictionary for
+ *
+ * @return: BOOL
+ *      - Confirmation that the data object passed all tests
+ */
+- (BOOL)checkDatum:(id)datum forKey:(NSString*)key {
+    
+    if ( ! datum) {
+        return FALSE;
+    }
+    
+    if ( ! [datum isKindOfClass:[NSDictionary class]]) {
+        return FALSE;
+    }
+    
+    if ( ! [[(NSDictionary*)datum allKeys] containsObject:key]) {
+        return FALSE;
+    }
+    
+    return TRUE;
 }
 
 @end

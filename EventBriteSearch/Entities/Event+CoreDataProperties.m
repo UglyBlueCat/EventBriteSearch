@@ -2,7 +2,7 @@
 //  Event+CoreDataProperties.m
 //  EventBriteSearch
 //
-//  Created by Robin Spinks on 01/06/2016.
+//  Created by Robin Spinks on 02/06/2016.
 //  Copyright © 2016 Robin Spinks. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,9 +13,10 @@
 
 @implementation Event (CoreDataProperties)
 
-@dynamic name;
-@dynamic logo;
-@dynamic start;
 @dynamic end;
+@dynamic logo;
+@dynamic name;
+@dynamic start;
+@dynamic eventid;
 
 @end

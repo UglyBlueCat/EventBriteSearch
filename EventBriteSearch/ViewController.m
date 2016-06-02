@@ -33,7 +33,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showTable)
+                                                 name:@"kDataDidFinishloading"
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,9 +68,17 @@ numberOfRowsInComponent:(NSInteger)component {
 - (IBAction)searchButtonTapped:(id)sender {
     NSString* city = CITIES[[self.cityPicker selectedRowInComponent:0]];
     [self.activityIndicator startAnimating];
-    [[DataFetcher sharedInstance] downloadEventsForCity:city completionHandler:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[DataFetcher sharedInstance] downloadEventsForCity:city
+                                      completionHandler:^(AFHTTPRequestOperation *operation, id responseObject) {
         [[DataHandler sharedInstance] saveData:(NSData *)responseObject];
     }];
+}
+
+#pragma mark Custom methods
+
+- (void)showTable {
+    [self.activityIndicator stopAnimating];
+    NSLog(@"%s\n\n***** SHOW TABLE *****", __PRETTY_FUNCTION__);
 }
 
 @end
