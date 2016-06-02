@@ -16,6 +16,9 @@
 		001173371CFC7D3100AA7B71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001173351CFC7D3100AA7B71 /* LaunchScreen.storyboard */; };
 		001173421CFC7D3100AA7B71 /* EventBriteSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 001173411CFC7D3100AA7B71 /* EventBriteSearchTests.m */; };
 		0011734D1CFC7D3100AA7B71 /* EventBriteSearchUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0011734C1CFC7D3100AA7B71 /* EventBriteSearchUITests.m */; };
+		001BF8921D00964100B76C2E /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001BF8911D00964100B76C2E /* TableViewController.m */; };
+		001BF8981D00AFFF00B76C2E /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 001BF8961D00AFFF00B76C2E /* EventCell.m */; };
+		001BF8991D00AFFF00B76C2E /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001BF8971D00AFFF00B76C2E /* EventCell.xib */; };
 		009E1C4A1CFF17460028E817 /* Event+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 009E1C471CFF17460028E817 /* Event+CoreDataProperties.m */; };
 		009E1C4B1CFF17460028E817 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 009E1C491CFF17460028E817 /* Event.m */; };
 		009E1C4E1CFF17D10028E817 /* DataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 009E1C4D1CFF17D10028E817 /* DataFetcher.m */; };
@@ -58,6 +61,11 @@
 		001173481CFC7D3100AA7B71 /* EventBriteSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventBriteSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0011734C1CFC7D3100AA7B71 /* EventBriteSearchUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventBriteSearchUITests.m; sourceTree = "<group>"; };
 		0011734E1CFC7D3100AA7B71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		001BF8901D00964100B76C2E /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		001BF8911D00964100B76C2E /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		001BF8951D00AFFF00B76C2E /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
+		001BF8961D00AFFF00B76C2E /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
+		001BF8971D00AFFF00B76C2E /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		009E1C461CFF17460028E817 /* Event+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Event+CoreDataProperties.h"; path = "Entities/Event+CoreDataProperties.h"; sourceTree = "<group>"; };
 		009E1C471CFF17460028E817 /* Event+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Event+CoreDataProperties.m"; path = "Entities/Event+CoreDataProperties.m"; sourceTree = "<group>"; };
 		009E1C481CFF17460028E817 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = Entities/Event.h; sourceTree = "<group>"; };
@@ -125,19 +133,18 @@
 			children = (
 				001173271CFC7D3100AA7B71 /* AppDelegate.h */,
 				001173281CFC7D3100AA7B71 /* AppDelegate.m */,
-				0011732A1CFC7D3100AA7B71 /* ViewController.h */,
-				0011732B1CFC7D3100AA7B71 /* ViewController.m */,
 				0011732D1CFC7D3100AA7B71 /* Main.storyboard */,
 				001173331CFC7D3100AA7B71 /* Assets.xcassets */,
 				001173351CFC7D3100AA7B71 /* LaunchScreen.storyboard */,
 				001173381CFC7D3100AA7B71 /* Info.plist */,
 				001173301CFC7D3100AA7B71 /* EventBriteSearch.xcdatamodeld */,
-				009E1C451CFF14AD0028E817 /* Entities */,
-				001173241CFC7D3100AA7B71 /* Supporting Files */,
 				009E1C4C1CFF17D10028E817 /* DataFetcher.h */,
 				009E1C4D1CFF17D10028E817 /* DataFetcher.m */,
 				009E1C501CFF43A90028E817 /* DataHandler.h */,
 				009E1C511CFF43A90028E817 /* DataHandler.m */,
+				001BF8931D00971800B76C2E /* View Controllers */,
+				009E1C451CFF14AD0028E817 /* Entities */,
+				001173241CFC7D3100AA7B71 /* Supporting Files */,
 			);
 			path = EventBriteSearch;
 			sourceTree = "<group>";
@@ -167,6 +174,28 @@
 				0011734E1CFC7D3100AA7B71 /* Info.plist */,
 			);
 			path = EventBriteSearchUITests;
+			sourceTree = "<group>";
+		};
+		001BF8931D00971800B76C2E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0011732A1CFC7D3100AA7B71 /* ViewController.h */,
+				0011732B1CFC7D3100AA7B71 /* ViewController.m */,
+				001BF8901D00964100B76C2E /* TableViewController.h */,
+				001BF8911D00964100B76C2E /* TableViewController.m */,
+				001BF8941D00AF9900B76C2E /* CustomCell */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		001BF8941D00AF9900B76C2E /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				001BF8951D00AFFF00B76C2E /* EventCell.h */,
+				001BF8961D00AFFF00B76C2E /* EventCell.m */,
+				001BF8971D00AFFF00B76C2E /* EventCell.xib */,
+			);
+			name = CustomCell;
 			sourceTree = "<group>";
 		};
 		009E1C451CFF14AD0028E817 /* Entities */ = {
@@ -304,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				001BF8991D00AFFF00B76C2E /* EventCell.xib in Resources */,
 				001173371CFC7D3100AA7B71 /* LaunchScreen.storyboard in Resources */,
 				001173341CFC7D3100AA7B71 /* Assets.xcassets in Resources */,
 				0011732F1CFC7D3100AA7B71 /* Main.storyboard in Resources */,
@@ -383,7 +413,9 @@
 				009E1C4B1CFF17460028E817 /* Event.m in Sources */,
 				0011732C1CFC7D3100AA7B71 /* ViewController.m in Sources */,
 				001173291CFC7D3100AA7B71 /* AppDelegate.m in Sources */,
+				001BF8921D00964100B76C2E /* TableViewController.m in Sources */,
 				001173261CFC7D3100AA7B71 /* main.m in Sources */,
+				001BF8981D00AFFF00B76C2E /* EventCell.m in Sources */,
 				009E1C4E1CFF17D10028E817 /* DataFetcher.m in Sources */,
 				001173321CFC7D3100AA7B71 /* EventBriteSearch.xcdatamodeld in Sources */,
 				009E1C4A1CFF17460028E817 /* Event+CoreDataProperties.m in Sources */,

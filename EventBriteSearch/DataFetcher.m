@@ -35,9 +35,6 @@
             completionHandler:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success {
     
     NSDictionary* params = @{@"venue.city": city, @"token": TOKEN};
-//    [self fetchDataFromURL:BASE_URL
-//            withParameters:params
-//         completionHandler:completion];
     [self fetchDataFromURL:BASE_URL withParameters:params success:success];
 }
 
@@ -64,23 +61,53 @@
              NSLog(@"%s Error fetching data: %@", __PRETTY_FUNCTION__, error.description);
          }];
 }
-/*
-- (void)fetchDataFromURL:(NSString*)url
-          withParameters:(NSDictionary*)parameters
-       completionHandler:(void (^)(NSURLResponse* response, id responseObject, NSError* error))completion {
-    
-    NSURLSessionConfiguration* configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager* manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    
-    NSURLRequest* request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET"
-                                                                          URLString:url
-                                                                         parameters:parameters
-                                                                              error:nil];
-    
-    NSURLSessionDataTask* dataTask = [manager dataTaskWithRequest:request
-                                                completionHandler:completion];
-    [dataTask resume];
-}
+
+/**
+ * Public method to download data
  */
+- (void)downloadDataFromURL:(NSString*)url
+                     success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success {
+    [self fetchDataFromURL:url withParameters:nil success:success];
+}
+
+/**
+ * Download an image and store on the filesystem if it doesn't exist
+ *
+ * @param:(NSString*)eventID
+ *      - The ID of the event the image is for
+ *
+ * @param:(NSString*)imageURL
+ *      - The URL to download the image from
+ */
+- (void)fetchImageForEventID:(NSString*)eventID fromURL:(NSString*)imageURL {
+    NSString* __block imageName = [NSString stringWithFormat:@"%@.png", eventID];
+    NSString* pathComponent = [NSString stringWithFormat:@"Documents/%@", imageName];
+    NSString* imagePath = [NSHomeDirectory() stringByAppendingPathComponent:pathComponent];
+    UIImage* image = [UIImage imageWithContentsOfFile:imagePath];
+    NSString* __block localImageURL = imageURL;
+    if (!image) {
+        [[DataFetcher sharedInstance] downloadDataFromURL:localImageURL
+                                                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                      [self saveImageFromData:responseObject
+                                                                     withName:imageName];
+                                                  }];
+    }
+}
+
+/**
+ * Save an image from downloaded data
+ *
+ * @param:(NSData*)data
+ *      - The data object
+ *
+ * @param:(NSString*)imageName
+ *      - The name of the image
+ */
+- (void)saveImageFromData:(NSData*)data withName:(NSString*)imageName {
+    UIImage* image = [UIImage imageWithData:data];
+    NSString* pathComponent = [NSString stringWithFormat:@"Documents/%@", imageName];
+    NSString* imagePath = [NSHomeDirectory() stringByAppendingPathComponent:pathComponent];
+    [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
+}
 
 @end

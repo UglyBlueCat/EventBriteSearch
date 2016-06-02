@@ -18,5 +18,6 @@
 @dynamic name;
 @dynamic start;
 @dynamic eventid;
+@dynamic city;
 
 @end

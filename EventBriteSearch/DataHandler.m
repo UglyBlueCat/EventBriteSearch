@@ -8,6 +8,7 @@
 
 #import "DataHandler.h"
 #import "Event.h"
+#import "DataFetcher.h"
 
 @implementation DataHandler
 
@@ -24,18 +25,26 @@
 }
 
 /**
- * Save a set of data to the store
+ * Save a set of data for a city
+ *
+ * @param:(NSData*)data
+ *      - The data to store
+ *
+ * @param:(NSString*)city
+ *      - The city the data is for
  */
-- (void) saveData:(NSData*)data {
+- (void) saveData:(NSData*)data withCity:(NSString*)city {
     NSError* error;
     NSDictionary* wholeData = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    DataFetcher* __block dataFetcher = [DataFetcher sharedInstance];
     if (error) {
         NSLog(@"%s JSON Conversion error: %@", __PRETTY_FUNCTION__, error);
     } else {
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext* localContext) {
             for (NSDictionary* event in wholeData[@"events"]) {
+                Event* newEvent;
                 if (event[@"id"] && [event[@"id"] isKindOfClass:[NSString class]]) {
-                    Event* newEvent = [Event MR_findFirstOrCreateByAttribute:@"eventid"
+                    newEvent = [Event MR_findFirstOrCreateByAttribute:@"eventid"
                                                                    withValue:event[@"id"]
                                                                    inContext:localContext];
                     if ([self checkDatum:event[@"name"] forKey:@"text"]) {
@@ -50,15 +59,20 @@
                     if ([self checkDatum:event[@"end"] forKey:@"utc"]) {
                         newEvent.end = event[@"end"][@"utc"];
                     }
+                    newEvent.city = city;
+                }
+                if (newEvent.logo) {
+                    [dataFetcher fetchImageForEventID:newEvent.eventid fromURL:newEvent.logo];
                 }
             }
         } completion:^(BOOL contextDidSave, NSError * _Nullable error) {
-            if (contextDidSave) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"kDataDidFinishloading"
-                                                                    object:nil];
-            } else {
+            if ( ! contextDidSave) {
                 NSLog(@"%s Error saving: %@", __PRETTY_FUNCTION__, error.debugDescription);
             }
+            NSDictionary* userInfo = @{@"didComplete":[NSNumber numberWithBool:contextDidSave]};
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"kDataDidFinishloading"
+                                                                object:nil
+                                                              userInfo:userInfo];
         }];
     }
 }
@@ -90,6 +104,20 @@
     }
     
     return TRUE;
+}
+
+/**
+ * Return a set of data for a city
+ *
+ * @param:(NSString*)city
+ *      - The city the data is for
+ *
+ * @return:NSArray
+ *      - An array containing the events
+ */
+- (NSArray*)eventsForCity:(NSString*)city {
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"city == %@", city];
+    return [Event MR_findAllWithPredicate:predicate];
 }
 
 @end

@@ -9,10 +9,12 @@
 #import "ViewController.h"
 #import "DataFetcher.h"
 #import "DataHandler.h"
+#import "TableViewController.h"
 
 /**
  * Define city names in a macro for now
  * A full implementation would use a data source
+ * This way makes it easier to change in the future
  */
 #define CITIES @[@"London", @"Madrid", @"New York"]
 
@@ -34,14 +36,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(showTable)
+                                             selector:@selector(showTable:)
                                                  name:@"kDataDidFinishloading"
                                                object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark UIPickerViewDelegate methods
@@ -68,17 +69,27 @@ numberOfRowsInComponent:(NSInteger)component {
 - (IBAction)searchButtonTapped:(id)sender {
     NSString* city = CITIES[[self.cityPicker selectedRowInComponent:0]];
     [self.activityIndicator startAnimating];
+    [self.searchButton setEnabled:NO];
     [[DataFetcher sharedInstance] downloadEventsForCity:city
                                       completionHandler:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [[DataHandler sharedInstance] saveData:(NSData *)responseObject];
+        [[DataHandler sharedInstance] saveData:(NSData *)responseObject withCity:city];
     }];
 }
 
 #pragma mark Custom methods
 
-- (void)showTable {
+- (void)showTable:(NSNotification*)notification {
     [self.activityIndicator stopAnimating];
-    NSLog(@"%s\n\n***** SHOW TABLE *****", __PRETTY_FUNCTION__);
+    [self.searchButton setEnabled:YES];
+    
+    TableViewController* tableVC = [TableViewController new];
+    tableVC.city = CITIES[[self.cityPicker selectedRowInComponent:0]];
+    
+    if (notification.userInfo[@"didComplete"]) {
+        [self presentViewController:tableVC animated:YES completion:^{
+            //
+        }];
+    }
 }
 
 @end

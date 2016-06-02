@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *start;
 @property (nullable, nonatomic, retain) NSString *eventid;
+@property (nullable, nonatomic, retain) NSString *city;
 
 @end
 

@@ -10,7 +10,31 @@
 
 @interface DataHandler : NSObject
 
+/**
+ * Access the shared instance
+ */
 + (DataHandler*)sharedInstance;
-- (void) saveData:(NSData*)data;
+
+/**
+ * Save a set of data for a city
+ *
+ * @param:(NSData*)data
+ *      - The data to store
+ *
+ * @param:(NSString*)city
+ *      - The city the data is for
+ */
+- (void) saveData:(NSData*)data withCity:(NSString*)city;
+
+/**
+ * Return a set of data for a city
+ *
+ * @param:(NSString*)city
+ *      - The city the data is for
+ *
+ * @return:NSArray
+ *      - An array containing the events
+ */
+- (NSArray*)eventsForCity:(NSString*)city;
 
 @end
