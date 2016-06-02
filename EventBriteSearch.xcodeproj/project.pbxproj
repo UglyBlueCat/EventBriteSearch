@@ -16,6 +16,10 @@
 		001173371CFC7D3100AA7B71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 001173351CFC7D3100AA7B71 /* LaunchScreen.storyboard */; };
 		001173421CFC7D3100AA7B71 /* EventBriteSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 001173411CFC7D3100AA7B71 /* EventBriteSearchTests.m */; };
 		0011734D1CFC7D3100AA7B71 /* EventBriteSearchUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0011734C1CFC7D3100AA7B71 /* EventBriteSearchUITests.m */; };
+		009E1C4A1CFF17460028E817 /* Event+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 009E1C471CFF17460028E817 /* Event+CoreDataProperties.m */; };
+		009E1C4B1CFF17460028E817 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 009E1C491CFF17460028E817 /* Event.m */; };
+		009E1C4E1CFF17D10028E817 /* DataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 009E1C4D1CFF17D10028E817 /* DataFetcher.m */; };
+		009E1C521CFF43A90028E817 /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 009E1C511CFF43A90028E817 /* DataHandler.m */; };
 		EA8EDC1A8122AF76864355BA /* libPods-EventBriteSearch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E2CBA30A4A88744DDEF7462 /* libPods-EventBriteSearch.a */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +58,15 @@
 		001173481CFC7D3100AA7B71 /* EventBriteSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventBriteSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0011734C1CFC7D3100AA7B71 /* EventBriteSearchUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventBriteSearchUITests.m; sourceTree = "<group>"; };
 		0011734E1CFC7D3100AA7B71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		009E1C461CFF17460028E817 /* Event+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Event+CoreDataProperties.h"; path = "Entities/Event+CoreDataProperties.h"; sourceTree = "<group>"; };
+		009E1C471CFF17460028E817 /* Event+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Event+CoreDataProperties.m"; path = "Entities/Event+CoreDataProperties.m"; sourceTree = "<group>"; };
+		009E1C481CFF17460028E817 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = Entities/Event.h; sourceTree = "<group>"; };
+		009E1C491CFF17460028E817 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Event.m; path = Entities/Event.m; sourceTree = "<group>"; };
+		009E1C4C1CFF17D10028E817 /* DataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFetcher.h; sourceTree = "<group>"; };
+		009E1C4D1CFF17D10028E817 /* DataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFetcher.m; sourceTree = "<group>"; };
+		009E1C4F1CFF1A140028E817 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		009E1C501CFF43A90028E817 /* DataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHandler.h; sourceTree = "<group>"; };
+		009E1C511CFF43A90028E817 /* DataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
 		7E2CBA30A4A88744DDEF7462 /* libPods-EventBriteSearch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EventBriteSearch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE4E084B3685387B8220FBD6 /* Pods-EventBriteSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventBriteSearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EventBriteSearch/Pods-EventBriteSearch.debug.xcconfig"; sourceTree = "<group>"; };
 		B3D735A9583111B45AA2EE80 /* Pods-EventBriteSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventBriteSearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-EventBriteSearch/Pods-EventBriteSearch.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,7 +132,12 @@
 				001173351CFC7D3100AA7B71 /* LaunchScreen.storyboard */,
 				001173381CFC7D3100AA7B71 /* Info.plist */,
 				001173301CFC7D3100AA7B71 /* EventBriteSearch.xcdatamodeld */,
+				009E1C451CFF14AD0028E817 /* Entities */,
 				001173241CFC7D3100AA7B71 /* Supporting Files */,
+				009E1C4C1CFF17D10028E817 /* DataFetcher.h */,
+				009E1C4D1CFF17D10028E817 /* DataFetcher.m */,
+				009E1C501CFF43A90028E817 /* DataHandler.h */,
+				009E1C511CFF43A90028E817 /* DataHandler.m */,
 			);
 			path = EventBriteSearch;
 			sourceTree = "<group>";
@@ -128,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				001173251CFC7D3100AA7B71 /* main.m */,
+				009E1C4F1CFF1A140028E817 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -148,6 +167,17 @@
 				0011734E1CFC7D3100AA7B71 /* Info.plist */,
 			);
 			path = EventBriteSearchUITests;
+			sourceTree = "<group>";
+		};
+		009E1C451CFF14AD0028E817 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				009E1C461CFF17460028E817 /* Event+CoreDataProperties.h */,
+				009E1C471CFF17460028E817 /* Event+CoreDataProperties.m */,
+				009E1C481CFF17460028E817 /* Event.h */,
+				009E1C491CFF17460028E817 /* Event.m */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		173B49E5E5BB8BBCF4472988 /* Frameworks */ = {
@@ -237,6 +267,7 @@
 				TargetAttributes = {
 					001173201CFC7D2F00AA7B71 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = EY2F3229H7;
 					};
 					0011733C1CFC7D3100AA7B71 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -348,10 +379,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				009E1C521CFF43A90028E817 /* DataHandler.m in Sources */,
+				009E1C4B1CFF17460028E817 /* Event.m in Sources */,
 				0011732C1CFC7D3100AA7B71 /* ViewController.m in Sources */,
 				001173291CFC7D3100AA7B71 /* AppDelegate.m in Sources */,
 				001173261CFC7D3100AA7B71 /* main.m in Sources */,
+				009E1C4E1CFF17D10028E817 /* DataFetcher.m in Sources */,
 				001173321CFC7D3100AA7B71 /* EventBriteSearch.xcdatamodeld in Sources */,
+				009E1C4A1CFF17460028E817 /* Event+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,10 +530,15 @@
 			baseConfigurationReference = AE4E084B3685387B8220FBD6 /* Pods-EventBriteSearch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREFIX_HEADER = EventBriteSearch/PrefixHeader.pch;
 				INFOPLIST_FILE = EventBriteSearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = UglyBlueCat.EventBriteSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -507,10 +547,15 @@
 			baseConfigurationReference = B3D735A9583111B45AA2EE80 /* Pods-EventBriteSearch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREFIX_HEADER = EventBriteSearch/PrefixHeader.pch;
 				INFOPLIST_FILE = EventBriteSearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = UglyBlueCat.EventBriteSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
